@@ -146,7 +146,6 @@
     <Content Include="Models\ModelBanco.edmx.diagram">
       <DependentUpon>ModelBanco.edmx</DependentUpon>
     </Content>
-    <Content Include="App_Code\BannersPublicitarios.cshtml.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -223,8 +222,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Uploads\Banners\banner-cdc-cademeumedico.png" />
-    <Content Include="Uploads\Banners\logo-Epeople-cademeumedico.png" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -247,9 +244,6 @@
     <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BannersPublicitarios.cs">
-      <DependentUpon>ModelBanco.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CidadeMetadado.cs" />
     <Compile Include="Models\Cidades.cs">
@@ -293,12 +287,15 @@
     <Content Include="Views\Layout.cshtml" />
     <Content Include="Views\Medicos\Adicionar.cshtml" />
     <Content Include="Views\Medicos\Editar.cshtml" />
+    <Content Include="Views\Medicos\Excluir.cshtml" />
+    <Content Include="Views\Especialidades\Excluir.cshtml" />
     <Content Include="Views\Especialidades\Editar.cshtml" />
     <Content Include="Views\Especialidades\Adicionar.cshtml" />
     <Content Include="Views\Especialidades\Index.cshtml" />
     <Content Include="Views\Cidades\Adicionar.cshtml" />
     <Content Include="Views\Cidades\Editar.cshtml" />
     <Content Include="Views\Cidades\Index.cshtml" />
+    <Content Include="Views\Cidades\Excluir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
