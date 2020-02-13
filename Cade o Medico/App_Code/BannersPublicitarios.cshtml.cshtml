@@ -1,0 +1,34 @@
+﻿@using Cade_o_Medico.Models;
+@helper RetornaDoisBannersMaisRecentes()
+{
+
+
+
+    var banco = new Cade_o_Medico.Models.CadeMeuMedicoEntities1();
+
+    var banners = banco.BannersPublicitarios.OrderByDescending(b => b.IDBanner).Take(2);
+
+
+
+    <div style="width:100%; text-align:left; border:1px solid #efefef; padding:10px; display:inline-block;">
+
+        @foreach (var b in banners)
+        {
+
+            <div style="width:125px; height:125px; float:left; margin-right:10px;">
+
+                <a href="@b.linkBanner">
+
+                    <img src="~/Uploads/Banners/@b.BannerCampanha" title="@b.TituloCampanha" />
+
+                </a>
+
+            </div>
+
+        }
+
+    </div>
+
+
+
+}

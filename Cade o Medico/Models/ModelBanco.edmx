@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CadeMeuMedicoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CadeMeuMedicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BannersPublicitarios">
+          <Key>
+            <PropertyRef Name="IDBanner" />
+          </Key>
+          <Property Name="IDBanner" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TituloCampanha" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="BannerCampanha" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="linkBanner" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="IDCidade" />
@@ -40,10 +49,10 @@
             <PropertyRef Name="IDUsuario" />
           </Key>
           <Property Name="IDUsuario" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nome" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="login" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="senha" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="fk_medicos_cidades">
           <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
@@ -69,7 +78,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CadeMeuMedicoDBModelStoreContainer">
+        <EntityContainer Name="CadeMeuMedicoModelStoreContainer">
+          <EntitySet Name="BannersPublicitarios" EntityType="Self.BannersPublicitarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cidades" EntityType="Self.Cidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidade" EntityType="Self.Especialidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
@@ -87,7 +97,16 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CadeMeuMedicoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CadeMeuMedicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BannersPublicitarios">
+          <Key>
+            <PropertyRef Name="IDBanner" />
+          </Key>
+          <Property Name="IDBanner" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TituloCampanha" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BannerCampanha" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="linkBanner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="IDCidade" />
@@ -156,7 +175,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CadeMeuMedicoEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CadeMeuMedicoEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BannersPublicitarios" EntityType="Self.BannersPublicitarios" />
           <EntitySet Name="Cidades" EntityType="Self.Cidades" />
           <EntitySet Name="Especialidade" EntityType="Self.Especialidade" />
           <EntitySet Name="Medicos" EntityType="Self.Medicos" />
@@ -175,9 +195,19 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CadeMeuMedicoDBModelStoreContainer" CdmEntityContainer="CadeMeuMedicoEntities">
+        <EntityContainerMapping StorageEntityContainer="CadeMeuMedicoModelStoreContainer" CdmEntityContainer="CadeMeuMedicoEntities1">
+          <EntitySetMapping Name="BannersPublicitarios">
+            <EntityTypeMapping TypeName="CadeMeuMedicoModel.BannersPublicitarios">
+              <MappingFragment StoreEntitySet="BannersPublicitarios">
+                <ScalarProperty Name="IDBanner" ColumnName="IDBanner" />
+                <ScalarProperty Name="TituloCampanha" ColumnName="TituloCampanha" />
+                <ScalarProperty Name="BannerCampanha" ColumnName="BannerCampanha" />
+                <ScalarProperty Name="linkBanner" ColumnName="linkBanner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Cidades">
-            <EntityTypeMapping TypeName="CadeMeuMedicoDBModel.Cidades">
+            <EntityTypeMapping TypeName="CadeMeuMedicoModel.Cidades">
               <MappingFragment StoreEntitySet="Cidades">
                 <ScalarProperty Name="IDCidade" ColumnName="IDCidade" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -185,7 +215,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Especialidade">
-            <EntityTypeMapping TypeName="CadeMeuMedicoDBModel.Especialidade">
+            <EntityTypeMapping TypeName="CadeMeuMedicoModel.Especialidade">
               <MappingFragment StoreEntitySet="Especialidade">
                 <ScalarProperty Name="IDEspecialidade" ColumnName="IDEspecialidade" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -193,7 +223,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medicos">
-            <EntityTypeMapping TypeName="CadeMeuMedicoDBModel.Medicos">
+            <EntityTypeMapping TypeName="CadeMeuMedicoModel.Medicos">
               <MappingFragment StoreEntitySet="Medicos">
                 <ScalarProperty Name="IDMedico" ColumnName="IDMedico" />
                 <ScalarProperty Name="CRM" ColumnName="CRM" />
@@ -210,13 +240,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="CadeMeuMedicoDBModel.Usuarios">
+            <EntityTypeMapping TypeName="CadeMeuMedicoModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="Nome" ColumnName="nome" />
-                <ScalarProperty Name="Login" ColumnName="login" />
-                <ScalarProperty Name="Senha" ColumnName="senha" />
-                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
