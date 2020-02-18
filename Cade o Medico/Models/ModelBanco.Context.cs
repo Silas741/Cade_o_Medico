@@ -13,10 +13,10 @@ namespace Cade_o_Medico.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CadeMeuMedicoEntities : DbContext
+    public partial class CadeMeuMedicoEntities1 : DbContext
     {
-        public CadeMeuMedicoEntities()
-            : base("name=CadeMeuMedicoEntities")
+        public CadeMeuMedicoEntities1()
+            : base("name=CadeMeuMedicoEntities1")
         {
         }
     
@@ -25,6 +25,7 @@ namespace Cade_o_Medico.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BannersPublicitarios> BannersPublicitarios { get; set; }
         public virtual DbSet<Cidades> Cidades { get; set; }
         public virtual DbSet<Especialidade> Especialidade { get; set; }
         public virtual DbSet<Medicos> Medicos { get; set; }

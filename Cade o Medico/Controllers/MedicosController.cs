@@ -10,7 +10,7 @@ namespace Cade_o_Medico.Controllers
 {
     public class MedicosController : Controller
     {
-        private CadeMeuMedicoEntities db = new CadeMeuMedicoEntities();
+        private CadeMeuMedicoEntities1 db = new CadeMeuMedicoEntities1();
         // GET: Medicos
         public ActionResult Index()
         {

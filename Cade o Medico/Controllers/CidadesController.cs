@@ -10,9 +10,10 @@ namespace Cade_o_Medico.Controllers
 {
     public class CidadesController : Controller
     {
-        private CadeMeuMedicoEntities db = new CadeMeuMedicoEntities();
+        private CadeMeuMedicoEntities1 db = new CadeMeuMedicoEntities1();
         // GET: Cidade
         public ActionResult Index()
+
         {
             var cidades = db.Cidades;
             return View(cidades);
