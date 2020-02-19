@@ -11,7 +11,22 @@ namespace Cade_o_Medico.Repositorios
         {
             HttpCookie UserCookie = new HttpCookie("UserCookieAuthentication");
 
-            UserCookie.Values["IDUsuario"] = Cade_o_Medico.Repositorios.RepositorioCriptografia
+
+            //Setando o ID do usuário no cookie
+
+            UserCookie.Values["IDUsuario"] = Cade_o_Medico.Repositorios.RepositorioCriptografia.Criptografar(IDUsuario.ToString());
+
+
+
+            //Definindo o prazo de vida do cookie
+
+            UserCookie.Expires = DateTime.Now.AddDays(1);
+
+
+
+            //Adicionando o cookie no contexto da aplicação
+
+            HttpContext.Current.Response.Cookies.Add(UserCookie);
         }
     }
 }

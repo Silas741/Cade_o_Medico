@@ -20,5 +20,10 @@ namespace Cade_o_Medico.Controllers
             return View();
         }
     
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Senha bem vindo";
+            return View();
+        }
     }
 }

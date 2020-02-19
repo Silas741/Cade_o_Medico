@@ -12,17 +12,22 @@
 
         body {
             padding-top: 60px;
+
+        }
+        ul.nav{
+            
+            display :inline-block;
         }
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar navbar-dark bg-dark">
+        <div class="container flex-row">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Cade meu medico?</a>
             </div>
             <div class="collpse navbar-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav flex-row">
                     <li id="menuHome">
                         @Html.ActionLink("Home", "Index", "Home")
                     </li>
@@ -38,8 +43,9 @@
         @RenderBody()
     </div>
 
-    <script src="@Url.Content("~/Scripts/jquery-2.0.2.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     @RenderSection("Scripts", required: false);
 
