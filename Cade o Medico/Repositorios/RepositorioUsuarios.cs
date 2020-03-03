@@ -35,9 +35,37 @@ namespace Cade_o_Medico.Repositorios
 
                 return false;
             }
+        }
+public static Usuarios RecuperarUsuarioID(long IDUsuario)
+        {
+            try
+            {
+                using (CadeMeuMedicoEntities1 db = new CadeMeuMedicoEntities1())
+                {
+                    var Usuario = db.Usuarios.Where(a => a.IDUsuario == IDUsuario).SingleOrDefault();
+                    return Usuario;
+                }
+            }
+            catch (Exception)
+            {
 
+                return null;
+            }
+        }
 
-
+        public static Usuarios VerificaUsuarioLogado()
+        {
+            var Usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
+            if (Usuario == null)
+            {
+                return null;
+            }
+            else
+            {
+                long IDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(Usuario.Values["IDUsuario"]));
+                var UsuarioRetornado = RecuperarUsuarioID(IDUsuario);
+                return UsuarioRetornado;
+            }
         }
     }
 }

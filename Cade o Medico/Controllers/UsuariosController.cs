@@ -7,12 +7,12 @@ using System.Web.Mvc;
 
 namespace Cade_o_Medico.Controllers
 {
-    public class UsuariosController : Controller
+    public class UsuariosController : BaseController
     {
         [HttpGet]
         public JsonResult AutenticacaoDeUsuario(string Login, string Senha)
         {
-            if (RepositorioUsuarios.AutenticarUsuario(Login,Senha))
+            if (RepositorioUsuarios.AutenticarUsuario(Login, Senha))
             {
                 return Json(new { OK = true,
                     Mensagem = "Usuario autenticado. Redirecionando... " }, JsonRequestBehavior.AllowGet);
