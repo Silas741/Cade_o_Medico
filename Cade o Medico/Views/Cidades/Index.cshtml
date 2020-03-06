@@ -17,16 +17,80 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.IDCidade }) |  
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.IDCidade })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.IDCidade }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.IDCidade },new { @class = "excluir"})
+            </td>
+        </tr>
+    }
 
 </table>
+@section Scripts{
+
+    <script>
+
+        $(function () {
+
+            var linhaAtual;
+
+
+
+            $("#menuCidades").addClass("active");
+
+
+
+            $(".excluir").on("click", function () {
+
+                if (confirm("Confirma a exclusão da Cidade?")) {
+
+                    var urlExclusao = $(this).attr("href");
+
+                    linhaAtual = $(this).closest("tr");
+
+
+
+                    $.ajax({
+
+                        url: urlExclusao,
+
+                        type: "POST"
+
+                    }).done(function (excluiu) {
+
+                        if (excluiu) {
+
+                            linhaAtual.remove();
+
+                        } else {
+
+                            alert("Ocorreu algum problema na exclusão da Cidade :(");
+
+                        }
+
+                    }).fail(function () {
+
+                        alert("Ocorreu algum erro :(");
+
+                    });
+
+                }
+
+
+
+                return false;
+
+            });
+
+        });
+
+
+
+    </script>
+
+}

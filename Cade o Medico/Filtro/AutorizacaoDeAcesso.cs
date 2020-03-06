@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Cade_o_Medico.Filtro
 {
     [HandleError]
-    [[AttributeUsage(AttributeTargets.Class |
+    [AttributeUsage(AttributeTargets.Class |
       AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
     public class AutorizacaoDeAcesso : ActionFilterAttribute
     {    

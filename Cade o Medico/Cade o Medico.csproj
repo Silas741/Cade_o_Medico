@@ -116,8 +116,6 @@
       <DependentUpon>ModelBanco.edmx</DependentUpon>
       <LastGenOutput>ModelBanco.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -131,8 +129,6 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
@@ -153,10 +149,6 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\Login.Home.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -230,11 +222,6 @@
     <Content Include="Scripts\umd\popper.js.flow" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
@@ -298,16 +285,17 @@
     <Content Include="Views\Layout.cshtml" />
     <Content Include="Views\Medicos\Adicionar.cshtml" />
     <Content Include="Views\Medicos\Editar.cshtml" />
-    <Content Include="Views\Medicos\Excluir.cshtml" />
-    <Content Include="Views\Especialidades\Excluir.cshtml" />
     <Content Include="Views\Especialidades\Editar.cshtml" />
     <Content Include="Views\Especialidades\Adicionar.cshtml" />
     <Content Include="Views\Especialidades\Index.cshtml" />
     <Content Include="Views\Cidades\Adicionar.cshtml" />
     <Content Include="Views\Cidades\Editar.cshtml" />
     <Content Include="Views\Cidades\Index.cshtml" />
-    <Content Include="Views\Cidades\Excluir.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Usuarios\Adicionar.cshtml" />
+    <Content Include="Views\Usuarios\Editar.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Excluir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -318,10 +306,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Mensagem\" />
-    <Folder Include="Views\Teste\" />
-    <Folder Include="Views\Usuarios\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

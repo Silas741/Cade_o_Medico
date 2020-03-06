@@ -17,17 +17,81 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.IDEspecialidade }) |
-           
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.IDEspecialidade })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.IDEspecialidade }) |
+
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.IDEspecialidade }, new { @class = "excluir" })
+            </td>
+        </tr>
+    }
 
 </table>
+@section Scripts{
+
+    <script>
+
+        $(function () {
+
+            var linhaAtual;
+
+
+
+            $("#menuEspecialidades").addClass("active");
+
+
+
+            $(".excluir").on("click", function () {
+
+                if (confirm("Confirma a exclusão do médico?")) {
+
+                    var urlExclusao = $(this).attr("href");
+
+                    linhaAtual = $(this).closest("tr");
+
+
+
+                    $.ajax({
+
+                        url: urlExclusao,
+
+                        type: "POST"
+
+                    }).done(function (excluiu) {
+
+                        if (excluiu) {
+
+                            linhaAtual.remove();
+
+                        } else {
+
+                            alert("Ocorreu algum problema na exclusão do médico :(");
+
+                        }
+
+                    }).fail(function () {
+
+                        alert("Ocorreu algum erro :(");
+
+                    });
+
+                }
+
+
+
+                return false;
+
+            });
+
+        });
+
+
+
+    </script>
+
+}
